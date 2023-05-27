@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import axios from "axios";
 
-function Inputfield(props) {
+function InputField(props) {
   const [notes, setNotes] = useState({
     title: "",
     content: ""
@@ -15,12 +16,19 @@ function Inputfield(props) {
   };
 
   const addItem = (event) => {
-    event.preventDefault();
-    props.onAdd(notes);
-    setNotes({
-      title: "",
-      content: ""
-    });
+    /* event.preventDefault(); */
+    axios.post("/api/notes", notes)
+      .then((response) => {
+        console.log(response.data);
+        // props.onAdd(response.data);
+        setNotes({
+          title: "",
+          content: ""
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -45,11 +53,13 @@ function Inputfield(props) {
           ></textarea>
         </div>
         <button onClick={addItem} className="btn">
-        <i className="fa-solid fa-plus"></i>
+          <i className="fa-solid fa-plus"></i>
         </button>
       </form>
     </div>
   );
 }
 
-export default Inputfield;
+export default InputField;
+
+

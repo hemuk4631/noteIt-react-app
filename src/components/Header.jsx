@@ -5,7 +5,7 @@ function Header() {
     <header className="text-white bg-success px-2 py-2">
     
       <div className="container">
-        <h1 className="text-center"><i class="fa-solid fa-note-sticky fa-xs"></i>noteIt</h1>
+        <h1 className="text-center"><i className="fa-solid fa-note-sticky fa-xs"></i>noteIt</h1>
       </div>
     </header>
   );
