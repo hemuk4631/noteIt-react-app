@@ -1,13 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT; //localhost
 app.use(cors());
 
 // Connect to MongoDB
-mongoose.connect("mongodb+srv://hemuk4631:hemuk...1@noteit-database.arhxb3f.mongodb.net/notesDB?retryWrites=true&w=majority", {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(()=>{
