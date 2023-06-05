@@ -75,16 +75,25 @@ const port = 5000;
 app.use(cors());
 
 // Connect to MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/notesDB", {
+mongoose.connect("mongodb+srv://hemuk4631:hemuk...1@noteit-database.arhxb3f.mongodb.net/notesDB?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+}).then(()=>{
+  console.log("connected to mongoDB atlas");
+
+}).catch(()=>{
+  console.log("not connected to mongoDB atlas");
 });
 
 // Create a schema for notes
 const noteSchema = new mongoose.Schema({
   title: String,
   content: String,
+<<<<<<< HEAD
   timestamp: { type: Date, default: Date.now },
+=======
+  timestamp: { type: Date, default: Date.now }
+>>>>>>> experimental-2
 });
 
 // Create a model based on the schema
