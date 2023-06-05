@@ -1,9 +1,4 @@
 import React from "react";
-
-<<<<<<< HEAD
-function Note({ id, title, content, timestamp, onDelete }) {
-  const formattedTimestamp = new Date(timestamp).toLocaleString();
-=======
 function Note({ id, title, content,timestamp, onDelete }) {
 
   //adding timestamp to note component.
