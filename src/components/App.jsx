@@ -59,6 +59,7 @@ function App() {
           id={note._id}
           title={note.title}
           content={note.content}
+          timestamp={note.timestamp}
           onDelete={deleteNote}
         />
       ))}

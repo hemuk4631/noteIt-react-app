@@ -1,12 +1,10 @@
 import React from "react";
 
-function Note({ id, title, content, onDelete }) {
-  const occasion = {
-    time: new Date().toLocaleTimeString(),
-    date: new Date().toLocaleDateString(),
-  };
-  const { time, date } = occasion;
+function Note({ id, title, content,timestamp, onDelete }) {
 
+  //adding timestamp to note component.
+  const formattedTimeStamp = new Date(timestamp).toLocaleString();
+  //delete handle.
   const handleDelete = () => {
     onDelete(id);
   };
@@ -16,7 +14,7 @@ function Note({ id, title, content, onDelete }) {
       <h1 className="text-dark mb-3">{title}</h1>
       <p className="text-white mb-3">{content}</p>
       <p className="text-white">
-        {date}, {time}
+        Saved on: {formattedTimeStamp}
       </p>
       <button onClick={handleDelete} className="btn">
         <i className="fa-solid fa-trash"></i>
