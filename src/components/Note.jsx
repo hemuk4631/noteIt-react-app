@@ -1,4 +1,6 @@
 import React from "react";
+
+
 function Note({ id, title, content,timestamp, onDelete }) {
 
   //adding timestamp to note component.
