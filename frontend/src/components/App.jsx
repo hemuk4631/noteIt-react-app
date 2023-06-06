@@ -14,7 +14,7 @@ function App() {
 
   const fetchNotes = () => {
     axios
-      .get("https://backend-ten-taupe.vercel.app/api/notes")
+      .get("https://backend-hemuk4631.vercel.app/api/notes")
       .then((response) => {
         setNotes(response.data);
       })
@@ -25,7 +25,7 @@ function App() {
 
   const addNote = (note) => {
     axios
-      .post("https://backend-ten-taupe.vercel.app/api/notes", note)
+      .post("https://backend-hemuk4631.vercel.app/api/notes", note)
       .then((response) => {
         console.log(response.data);
         setNotes((prevNotes) => [...prevNotes, response.data]);
@@ -37,7 +37,7 @@ function App() {
 
   const deleteNote = (id) => {
     axios
-      .delete(`https://backend-ten-taupe.vercel.app/api/notes/${id}`)
+      .delete(`https://backend-hemuk4631.vercel.app/api/notes/${id}`)
       .then((response) => {
         console.log(response.data);
         setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
