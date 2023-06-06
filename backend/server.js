@@ -8,7 +8,7 @@ const port = process.env.PORT; //localhost
 app.use(cors());
 
 // Connect to MongoDB
-mongoose.connect(process.env.DB_URL, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(()=>{

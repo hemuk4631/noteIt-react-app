@@ -14,7 +14,7 @@ function App() {
 
   const fetchNotes = () => {
     axios
-      .get("/api/notes")
+      .get("//notes")
       .then((response) => {
         setNotes(response.data);
       })
