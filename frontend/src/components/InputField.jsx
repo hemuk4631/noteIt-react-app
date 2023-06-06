@@ -17,7 +17,7 @@ function InputField(props) {
 
   const addItem = (event) => {
     /* event.preventDefault(); */
-    axios.post("https://backend-hemuk4631.vercel.app/api/notes", notes)
+    axios.post("https://backend-ten-taupe.vercel.app/api/notes", notes)
       .then((response) => {
         console.log(response.data);
         // props.onAdd(response.data);
