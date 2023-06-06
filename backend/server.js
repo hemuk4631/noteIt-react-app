@@ -4,31 +4,32 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT; //localhost
+const port = process.env.PORT || 5000; // Set a default port if PORT environment variable is not defined
 app.use(cors());
+app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(()=>{
-  console.log("connected to mongoDB atlas");
-
-}).catch(()=>{
-  console.log("not connected to mongoDB atlas");
-});
+mongoose
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected to MongoDB Atlas");
+  })
+  .catch((error) => {
+    console.log("Error connecting to MongoDB Atlas:", error);
+  });
 
 // Create a schema for notes
 const noteSchema = new mongoose.Schema({
   title: String,
   content: String,
-  timestamp: { type: Date, default: Date.now }
+  timestamp: { type: Date, default: Date.now },
 });
 
 // Create a model based on the schema
 const Note = mongoose.model("Note", noteSchema);
-
-app.use(express.json());
 
 // API endpoints
 
@@ -67,6 +68,11 @@ app.delete("/api/notes/:id", async (req, res) => {
   } catch (err) {
     res.status(500).send(err);
   }
+});
+
+// Handle requests to the root URL
+app.get("/", (req, res) => {
+  res.send("Welcome to the Notes API.");
 });
 
 // Start the server
